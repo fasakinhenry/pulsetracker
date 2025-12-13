@@ -1,5 +1,5 @@
-# Simple MERN Authentication
+# Pulsetracker
 
-This is a simple fullstack app with complete authentication
+This is a simple full-stack app that companies use to measure User Satisfaction
 
-> Made with 💖 by [fasakinhenry](https://github.com/fasakinhenry)
+> Made with 💖 by **Team Pulsetracker**
