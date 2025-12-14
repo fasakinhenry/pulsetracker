@@ -10,27 +10,46 @@ import healthRouter from './routes/health.js';
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// Database connection
+// Database
 connectDB();
 
-// Configure CORS
-const allowedOrigins = ['http://localhost:5175'];
+// CORS CONFIG
+const allowedOrigins = process.env.CORS_ORIGINS
+  ? process.env.CORS_ORIGINS.split(',').map((origin) => origin.trim())
+  : [];
 
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow server-to-server, curl, uptime monitors
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    console.warn(`❌ CORS blocked: ${origin}`);
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+// Apply middleware
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: allowedOrigins, credentials: true }));
 
-// API Endpoints
-app.get('/', (req, res) => res.json('API is working'));
+// Routes
+app.get('/', (req, res) => {
+  res.json('API is working');
+});
+
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
 
-// Health endpoint
+// Health endpoint (NO CORS issues)
 app.use('/health', healthRouter);
 
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok', time: new Date() });
-});
-
-// Start the server
-app.listen(PORT, () => console.log(`Server is running on Port: ${PORT}`));
+// Server
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
