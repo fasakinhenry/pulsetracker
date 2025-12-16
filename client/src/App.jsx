@@ -9,7 +9,6 @@ import Homepage from "./pages/landing/Homepage.jsx";
 import DashboardLayout from "./layout/DashboardLayout.jsx";
 import {
     AIContextPage,
-    AlertsPage,
     AnalyticsPage, CompliancePage,
     CustomersPage,
     DataHubPage, DataRightsPage,
