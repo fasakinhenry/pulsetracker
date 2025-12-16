@@ -55,7 +55,7 @@ export default function Hero() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => scrollToSection("#waitlist")}
+            onClick={() => navigate("/login")}
             className="flex items-center gap-2 rounded bg-blue-700 px-8 py-3 font-medium text-white transition-colors hover:bg-blue-700"
           >
             Get Started

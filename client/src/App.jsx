@@ -6,6 +6,17 @@ import ResetPassword from './pages/auth/ResetPassword.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Homepage from "./pages/landing/Homepage.jsx";
+import DashboardLayout from "./layout/DashboardLayout.jsx";
+import {
+    AIContextPage,
+    AlertsPage,
+    AnalyticsPage, CompliancePage,
+    CustomersPage,
+    DashboardPage,
+    DataHubPage, DataRightsPage,
+    IntegrationsPage, SocialsPage
+} from "./pages/dashboard/Page.jsx";
+
 
 const App = () => {
   return (
@@ -17,6 +28,20 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/email-verify' element={<EmailVerify />} />
         <Route path='/reset-password' element={<ResetPassword />} />
+          <Route path='/dashboard' element={<DashboardLayout />}>
+              <Route index element={<DashboardPage />} />
+              <Route path='dashboard' element={<DashboardPage />} />
+              <Route path='customers' element={<CustomersPage />} />
+              <Route path='alerts' element={<AlertsPage />} />
+              <Route path='integrations' element={<IntegrationsPage />} />
+              <Route path='analytics' element={<AnalyticsPage />} />
+              <Route path='socials' element={<SocialsPage />} />
+              <Route path='aicontext' element={<AIContextPage />} />
+              <Route path='datahub' element={<DataHubPage />} />
+              <Route path='datarights' element={<DataRightsPage />} />
+              <Route path='compliance' element={<CompliancePage />} />
+              <Route path='settings' element={<SettingsPage />} />
+          </Route>
       </Routes>
     </div>
   );
