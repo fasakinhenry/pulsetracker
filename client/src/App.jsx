@@ -14,7 +14,7 @@ import {
     CustomersPage,
     DashboardPage,
     DataHubPage, DataRightsPage,
-    IntegrationsPage, SocialsPage
+    IntegrationsPage, SettingsPage, SocialsPage
 } from "./pages/dashboard/Page.jsx";
 
 
