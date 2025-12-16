@@ -12,11 +12,10 @@ import {
     AlertsPage,
     AnalyticsPage, CompliancePage,
     CustomersPage,
-    DashboardPage,
     DataHubPage, DataRightsPage,
     IntegrationsPage, SettingsPage, SocialsPage
 } from "./pages/dashboard/Page.jsx";
-
+import DashboardPage from './pages/dashboard/DashboardPage.jsx'
 
 const App = () => {
   return (
