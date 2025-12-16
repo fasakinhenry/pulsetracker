@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import {useNavigate} from "react-router-dom";
 
 export default function Hero() {
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const navigate = useNavigate();
 
   return (
     <section id="hero" className="bg-white px-4 pb-20 pt-32 sm:px-6 lg:px-8">
