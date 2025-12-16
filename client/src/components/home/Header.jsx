@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { assets } from '../assets/assets';
-import { AppContent } from '../context/AppContext';
+import { assets } from '../../assets/assets.js';
+import { AppContent } from '../../context/AppContext.jsx';
 
 const Header = () => {
   const { userData } = useContext(AppContent);

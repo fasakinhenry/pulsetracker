@@ -1,5 +1,5 @@
-import Header from '../components/Header';
-import Navbar from '../components/Navbar';
+import Header from '../../components/home/Header.jsx';
+import Navbar from '../../components/home/Navbar.jsx';
 
 const Home = () => {
   return (
