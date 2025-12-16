@@ -16,6 +16,7 @@ import {
     IntegrationsPage, SettingsPage, SocialsPage
 } from "./pages/dashboard/Page.jsx";
 import DashboardPage from './pages/dashboard/DashboardPage.jsx'
+import AlertsPage from './pages/dashboard/AlertsPage.jsx'
 
 const App = () => {
   return (
