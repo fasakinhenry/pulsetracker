@@ -69,7 +69,7 @@ const CustomersPage = () => {
             ],
             activityTimeline: [
                 { type: 'feedback', action: 'Submitted positive feedback', time: new Date() },
-                { type: 'transaction', action: 'Completed transaction', time: new Date(Date.now() - 1 * 60 * 60 * 1000) }
+                { type: 'transaction', action: 'Completed transaction', time: new Date(Date.now() - 60 * 60 * 1000) }
             ],
             metadata: {
                 accountAge: '2 years',
@@ -138,7 +138,7 @@ const CustomersPage = () => {
     // Action log data
     const actionLog = [
         { id: 1, customer: 'John Doe', action: 'Resolved complaint', agent: 'Sarah Chen', time: new Date(), status: 'completed' },
-        { id: 2, customer: 'Jane Smith', action: 'Escalated to manager', agent: 'Mike Johnson', time: new Date(Date.now() - 1 * 60 * 60 * 1000), status: 'in_progress' },
+        { id: 2, customer: 'Jane Smith', action: 'Escalated to manager', agent: 'Mike Johnson', time: new Date(Date.now() - 60 * 60 * 1000), status: 'in_progress' },
         { id: 3, customer: 'Bob Johnson', action: 'Sent follow-up email', agent: 'Sarah Chen', time: new Date(Date.now() - 2 * 60 * 60 * 1000), status: 'completed' }
     ];
 
@@ -172,11 +172,10 @@ const CustomersPage = () => {
     };
 
     const filteredCustomers = customers.filter(customer => {
-        if (searchQuery && !customer.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-            !customer.email.toLowerCase().includes(searchQuery.toLowerCase()) &&
-            !customer.id.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-        if (filterSentiment !== 'all' && customer.sentiment !== filterSentiment) return false;
-        return true;
+        const q = searchQuery.trim().toLowerCase();
+        const matchesSearch = !q || [customer.name, customer.email, customer.id].some(field => field.toLowerCase().includes(q));
+        const matchesSentiment = filterSentiment === 'all' || customer.sentiment === filterSentiment;
+        return matchesSearch && matchesSentiment;
     });
 
     const paginatedCustomers = filteredCustomers.slice(
